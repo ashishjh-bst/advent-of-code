@@ -7,7 +7,6 @@ import (
 
 func Part1(input string) {
 	rounds := strings.Split(input, "\n")
-	log.Printf("rounds %#v", rounds)
 	score := 0
 	for _, round := range rounds {
 		switch round {

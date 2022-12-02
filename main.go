@@ -13,7 +13,6 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	log.Printf("args %v", args)
 	type Part func(input string)
 	type Day map[int]Part
 	Days := map[int]Day{
@@ -35,6 +34,8 @@ func main() {
 	if part < 1 || part > 2 {
 		log.Fatalf("Invalid Part %s, should be 1 or 1", args[1])
 	}
+
+	log.Printf("Executing aoc2022 Day %d Part %d", day, part)
 	input, err := common.ReadFileInput(fmt.Sprintf("./day%d/input-part%d.txt", day, part))
 	if err != nil {
 		log.Fatal(err)
