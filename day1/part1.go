@@ -25,5 +25,5 @@ func Part1(input string) {
 			maxCal = currElfItemSum
 		}
 	}
-	fmt.Printf("Max Calories %d \n", maxCal)
+	fmt.Printf("Max Calories: %d \n", maxCal)
 }
