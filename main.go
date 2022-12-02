@@ -8,6 +8,7 @@ import (
 
 	"github.com/ashishjh-bst/aoc2022/common"
 	"github.com/ashishjh-bst/aoc2022/day1"
+	"github.com/ashishjh-bst/aoc2022/day2"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 	type Day map[int]Part
 	Days := map[int]Day{
 		1: {1: day1.Part1, 2: day1.Part2},
+		2: {1: day2.Part1, 2: day2.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])
