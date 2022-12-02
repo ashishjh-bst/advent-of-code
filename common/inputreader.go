@@ -1,19 +1,19 @@
 package common
 
 import (
+	"fmt"
 	"io"
-	"log"
 	"os"
 )
 
-func ReadFileInput(path string) string {
+func ReadFileInput(path string) (string, error) {
 	file, err := os.Open(path)
 	if err != nil {
-		log.Fatalf("Failed Reading file %s %s", path, err)
+		return "", fmt.Errorf("failed to read file %s, error: %s", path, err.Error())
 	}
 	data, err := io.ReadAll(file)
 	if err != nil {
-		log.Fatalf("Failed Reading file %s %s", path, err)
+		return "", fmt.Errorf("failed to read file %s, error: %s", path, err.Error())
 	}
-	return string(data)
+	return string(data), nil
 }

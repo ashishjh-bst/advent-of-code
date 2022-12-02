@@ -1,19 +1,13 @@
-package main
+package day1
 
 import (
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 	"strings"
-
-	"github.com/ashishjh-bst/aoc2022/common"
 )
 
-func main() {
-	args := os.Args[1:]
-	inputFilePath := args[0]
-	input := common.ReadFileInput(inputFilePath)
+func Part1(input string) {
 	foodItems := strings.Split(input, "\n")
 	maxCal := 0
 	currElfItemSum := 0
@@ -23,7 +17,7 @@ func main() {
 		} else {
 			cals, err := strconv.Atoi(item)
 			if err != nil {
-				log.Fatal("Couldn't convert string to int for %s, check input")
+				log.Fatalf("Couldn't convert string to int for %s, check input", item)
 			}
 			currElfItemSum += cals
 		}
