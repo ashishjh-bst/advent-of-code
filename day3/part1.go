@@ -13,8 +13,8 @@ func Part1(input string) {
 	for _, rucksack := range rucksacks {
 		size := len(rucksack)
 		compartment1, compartment2 := getCompartments(rucksack)
-		var giftsComp1 = make(GiftMap, 0)
-		var giftsComp2 = make(GiftMap, 0)
+		giftsComp1 := make(GiftMap, 0)
+		giftsComp2 := make(GiftMap, 0)
 		for i := 0; i < size/2; i++ {
 			if _, ok := giftsComp1[compartment1[i]]; ok {
 				giftsComp1[compartment1[i]] = 0
