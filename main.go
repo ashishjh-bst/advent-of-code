@@ -19,7 +19,7 @@ func main() {
 	Days := map[int]Day{
 		1: {1: day1.Part1, 2: day1.Part2},
 		2: {1: day2.Part1, 2: day2.Part2},
-		3: {1: day3.Part1, 2: day3.Part1},
+		3: {1: day3.Part1, 2: day3.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])

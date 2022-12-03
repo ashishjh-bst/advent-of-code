@@ -16,12 +16,6 @@ func Part1(input string) {
 		giftsComp1 := make(GiftMap, 0)
 		giftsComp2 := make(GiftMap, 0)
 		for i := 0; i < size/2; i++ {
-			if _, ok := giftsComp1[compartment1[i]]; ok {
-				giftsComp1[compartment1[i]] = 0
-			}
-			if _, ok := giftsComp2[compartment2[i]]; ok {
-				giftsComp2[compartment2[i]] = 0
-			}
 			giftsComp1[compartment1[i]]++
 			giftsComp2[compartment2[i]]++
 		}
