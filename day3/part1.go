@@ -2,7 +2,6 @@ package day3
 
 import (
 	"log"
-	"reflect"
 	"strings"
 )
 
@@ -19,9 +18,7 @@ func Part1(input string) {
 			giftsComp1[compartment1[i]]++
 			giftsComp2[compartment2[i]]++
 		}
-		iter := reflect.ValueOf(giftsComp1).MapRange()
-		for iter.Next() {
-			gift := rune(iter.Key().Int())
+		for gift := range giftsComp1 {
 			_, ok := giftsComp2[gift]
 			if ok {
 				if gift >= 'a' && gift <= 'z' {

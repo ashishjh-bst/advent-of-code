@@ -2,7 +2,6 @@ package day3
 
 import (
 	"log"
-	"reflect"
 	"strings"
 )
 
@@ -30,12 +29,10 @@ func Part2(input string) {
 				elfCommon[item] = 3
 			}
 		}
-		iter := reflect.ValueOf(elfCommon).MapRange()
-		for iter.Next() {
-			if iter.Value().Int() < 3 {
+		for gift, value := range elfCommon {
+			if value < 3 {
 				continue
 			}
-			gift := iter.Key().Int()
 			if gift >= 'a' && gift <= 'z' {
 				prioritySum += int(gift - 'a' + 1)
 			} else if gift >= 'A' && gift <= 'Z' {
