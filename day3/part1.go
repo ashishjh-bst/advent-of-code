@@ -32,7 +32,7 @@ func Part1(input string) {
 			if ok {
 				if gift >= 'a' && gift <= 'z' {
 					prioritySum += int(gift - 'a' + 1)
-				} else if gift >= 'A' && gift <= 'z' {
+				} else if gift >= 'A' && gift <= 'Z' {
 					prioritySum += int(gift - 'A' + 27)
 				}
 			}
