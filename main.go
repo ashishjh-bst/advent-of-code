@@ -17,6 +17,8 @@ func main() {
 	args := os.Args[1:]
 	type Part func(input string)
 	type Day map[int]Part
+
+	// map of solutions
 	Days := map[int]Day{
 		1: {1: day1.Part1, 2: day1.Part2},
 		2: {1: day2.Part1, 2: day2.Part2},
@@ -36,7 +38,7 @@ func main() {
 		log.Fatalf("Invalid Part %s, should be an integer", args[1])
 	}
 	if part < 1 || part > 2 {
-		log.Fatalf("Invalid Part %s, should be 1 or 1", args[1])
+		log.Fatalf("Invalid Part %s, should be 1 or 2", args[1])
 	}
 
 	log.Printf("Executing aoc2022 Day %d Part %d", day, part)
