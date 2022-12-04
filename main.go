@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/ashishjh-bst/aoc2022/common"
 	"github.com/ashishjh-bst/aoc2022/day1"
@@ -15,7 +16,7 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	type Part func(input string)
+	type Part func(input string) int
 	type Day map[int]Part
 
 	// map of solutions
@@ -46,5 +47,10 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	Days[day][part](input)
+	start := time.Now()
+	answer := Days[day][part](input)
+	elapsed := time.Since(start)
+
+	log.Printf("Execution took %s seconds", elapsed)
+	log.Printf("The answer is %d", answer)
 }

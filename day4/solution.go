@@ -1,7 +1,6 @@
 package day4
 
 import (
-	"log"
 	"strconv"
 	"strings"
 )
@@ -11,7 +10,7 @@ type Elf struct {
 	end   int
 }
 
-func Part1(input string) {
+func Part1(input string) int {
 	elfPairs := strings.Split(input, "\n")
 	overlaps := 0
 	for _, pair := range elfPairs {
@@ -22,10 +21,10 @@ func Part1(input string) {
 			overlaps++
 		}
 	}
-	log.Printf("Total Overlaps %d", overlaps)
+	return overlaps
 }
 
-func Part2(input string) {
+func Part2(input string) int {
 	elfPairs := strings.Split(input, "\n")
 	overlaps := 0
 	for _, pair := range elfPairs {
@@ -37,7 +36,7 @@ func Part2(input string) {
 			overlaps++
 		}
 	}
-	log.Printf("Total Overlaps %d", overlaps)
+	return overlaps
 }
 
 func strToElf(elf string) Elf {

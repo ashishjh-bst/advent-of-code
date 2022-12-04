@@ -1,11 +1,10 @@
 package day2
 
 import (
-	"log"
 	"strings"
 )
 
-func Part1(input string) {
+func Part1(input string) int {
 	rounds := strings.Split(input, "\n")
 	score := 0
 	for _, round := range rounds {
@@ -30,10 +29,10 @@ func Part1(input string) {
 			score += 6
 		}
 	}
-	log.Printf("Total Score for strategy is %d", score)
+	return score
 }
 
-func Part2(input string) {
+func Part2(input string) int {
 	rounds := strings.Split(input, "\n")
 	score := 0
 	for _, round := range rounds {
@@ -58,5 +57,5 @@ func Part2(input string) {
 			score += 7
 		}
 	}
-	log.Printf("Total Score for strategy is %d", score)
+	return score
 }

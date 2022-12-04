@@ -1,14 +1,13 @@
 package day1
 
 import (
-	"fmt"
 	"log"
 	"sort"
 	"strconv"
 	"strings"
 )
 
-func Part1(input string) {
+func Part1(input string) int {
 	foodItems := strings.Split(input, "\n")
 	maxCal := 0
 	currElfItemSum := 0
@@ -26,10 +25,10 @@ func Part1(input string) {
 			maxCal = currElfItemSum
 		}
 	}
-	fmt.Printf("Max Calories: %d \n", maxCal)
+	return maxCal
 }
 
-func Part2(input string) {
+func Part2(input string) int {
 	foodItems := strings.Split(input, "\n")
 	elfCals := []int{}
 	currElfItemSum := 0
@@ -49,5 +48,5 @@ func Part2(input string) {
 	sort.Slice(elfCals, func(i, j int) bool {
 		return elfCals[i] > elfCals[j]
 	})
-	fmt.Printf("Total Calories carried by top 3 elves: %d \n", elfCals[0]+elfCals[1]+elfCals[2])
+	return elfCals[0] + elfCals[1] + elfCals[2]
 }

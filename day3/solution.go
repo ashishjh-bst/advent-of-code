@@ -1,11 +1,10 @@
 package day3
 
 import (
-	"log"
 	"strings"
 )
 
-func Part1(input string) {
+func Part1(input string) int {
 	rucksacks := strings.Split(input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
@@ -29,10 +28,10 @@ func Part1(input string) {
 			}
 		}
 	}
-	log.Printf("Priority Sum is %d", prioritySum)
+	return prioritySum
 }
 
-func Part2(input string) {
+func Part2(input string) int {
 	rucksacks := strings.Split(input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
@@ -67,7 +66,7 @@ func Part2(input string) {
 			}
 		}
 	}
-	log.Printf("Priority Sum is %d", prioritySum)
+	return prioritySum
 }
 
 func getCompartments(rucksack string) ([]rune, []rune) {
