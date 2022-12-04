@@ -10,6 +10,7 @@ import (
 	"github.com/ashishjh-bst/aoc2022/day1"
 	"github.com/ashishjh-bst/aoc2022/day2"
 	"github.com/ashishjh-bst/aoc2022/day3"
+	"github.com/ashishjh-bst/aoc2022/day4"
 )
 
 func main() {
@@ -20,6 +21,7 @@ func main() {
 		1: {1: day1.Part1, 2: day1.Part2},
 		2: {1: day2.Part1, 2: day2.Part2},
 		3: {1: day3.Part1, 2: day3.Part2},
+		4: {1: day4.Part1, 2: day4.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])
