@@ -40,7 +40,7 @@ func main() {
 	}
 
 	log.Printf("Executing aoc2022 Day %d Part %d", day, part)
-	input, err := common.ReadFileInput(fmt.Sprintf("./day%d/input-part%d.txt", day, part))
+	input, err := common.ReadFileInput(fmt.Sprintf("./day%d/input.txt", day))
 	if err != nil {
 		log.Fatal(err)
 	}
