@@ -71,7 +71,7 @@ func parseInput(input string) ([][]string, []string) {
 			stacks[stackKey] = append([]string{string(crate[1])}, stacks[stackKey]...)
 		}
 	}
-	stacksSlice := make([][]string, len(stacks), len(stacks))
+	stacksSlice := make([][]string, len(stacks))
 	for key, val := range stacks {
 		stacksSlice[key-1] = val
 	}
