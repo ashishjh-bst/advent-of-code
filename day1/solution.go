@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-func Part1(input string) string {
-	foodItems := strings.Split(input, "\n")
+func Part1(input *string) string {
+	foodItems := strings.Split(*input, "\n")
 	maxCal := 0
 	currElfItemSum := 0
 	for _, item := range foodItems {
@@ -28,8 +28,8 @@ func Part1(input string) string {
 	return strconv.Itoa(maxCal)
 }
 
-func Part2(input string) string {
-	foodItems := strings.Split(input, "\n")
+func Part2(input *string) string {
+	foodItems := strings.Split(*input, "\n")
 	elfCals := []int{}
 	currElfItemSum := 0
 	for _, item := range foodItems {

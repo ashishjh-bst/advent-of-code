@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func Part1(input string) string {
+func Part1(input *string) string {
 	stacks, moves := parseInput(input)
 	for _, move := range moves {
 		count, from, to := parseMove(move)
@@ -24,7 +24,7 @@ func Part1(input string) string {
 	return strings.Join(topCrates, "")
 }
 
-func Part2(input string) string {
+func Part2(input *string) string {
 	stacks, moves := parseInput(input)
 	for _, move := range moves {
 		count, from, to := parseMove(move)
@@ -41,8 +41,8 @@ func Part2(input string) string {
 	return strings.Join(topCrates, "")
 }
 
-func parseInput(input string) ([][]string, []string) {
-	lines := strings.Split(input, "\n")
+func parseInput(input *string) ([][]string, []string) {
+	lines := strings.Split(*input, "\n")
 	totalStacks := (len(lines[0]) / 4) + 1
 	stacks := make([][]string, totalStacks)
 	moves := make([]string, 0)

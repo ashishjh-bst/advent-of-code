@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-func Part1(input string) string {
-	rucksacks := strings.Split(input, "\n")
+func Part1(input *string) string {
+	rucksacks := strings.Split(*input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
 	for _, rucksack := range rucksacks {
@@ -32,8 +32,8 @@ func Part1(input string) string {
 	return strconv.Itoa(prioritySum)
 }
 
-func Part2(input string) string {
-	rucksacks := strings.Split(input, "\n")
+func Part2(input *string) string {
+	rucksacks := strings.Split(*input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
 	for g := 0; g < len(rucksacks); g = g + 3 {

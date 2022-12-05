@@ -17,7 +17,7 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	type Part func(input string) string
+	type Part func(input *string) string
 	type Day map[int]Part
 
 	// map of solutions
@@ -50,7 +50,7 @@ func main() {
 		log.Fatal(err)
 	}
 	start := time.Now()
-	answer := Days[day][part](input)
+	answer := Days[day][part](&input)
 	elapsed := time.Since(start)
 
 	log.Printf("Execution took %s seconds", elapsed)

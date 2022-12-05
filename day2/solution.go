@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-func Part1(input string) string {
-	rounds := strings.Split(input, "\n")
+func Part1(input *string) string {
+	rounds := strings.Split(*input, "\n")
 	score := 0
 	for _, round := range rounds {
 		switch round {
@@ -33,8 +33,8 @@ func Part1(input string) string {
 	return strconv.Itoa(score)
 }
 
-func Part2(input string) string {
-	rounds := strings.Split(input, "\n")
+func Part2(input *string) string {
+	rounds := strings.Split(*input, "\n")
 	score := 0
 	for _, round := range rounds {
 		switch round {
