@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func Part1(input string) int {
+func Part1(input string) string {
 	foodItems := strings.Split(input, "\n")
 	maxCal := 0
 	currElfItemSum := 0
@@ -25,10 +25,10 @@ func Part1(input string) int {
 			maxCal = currElfItemSum
 		}
 	}
-	return maxCal
+	return strconv.Itoa(maxCal)
 }
 
-func Part2(input string) int {
+func Part2(input string) string {
 	foodItems := strings.Split(input, "\n")
 	elfCals := []int{}
 	currElfItemSum := 0
@@ -48,5 +48,5 @@ func Part2(input string) int {
 	sort.Slice(elfCals, func(i, j int) bool {
 		return elfCals[i] > elfCals[j]
 	})
-	return elfCals[0] + elfCals[1] + elfCals[2]
+	return strconv.Itoa(elfCals[0] + elfCals[1] + elfCals[2])
 }

@@ -10,7 +10,7 @@ type Elf struct {
 	end   int
 }
 
-func Part1(input string) int {
+func Part1(input string) string {
 	elfPairs := strings.Split(input, "\n")
 	overlaps := 0
 	for _, pair := range elfPairs {
@@ -21,22 +21,22 @@ func Part1(input string) int {
 			overlaps++
 		}
 	}
-	return overlaps
+	return strconv.Itoa(overlaps)
 }
 
-func Part2(input string) int {
+func Part2(input string) string {
 	elfPairs := strings.Split(input, "\n")
-	overlaps := 0
+	totalPairs := len(elfPairs)
 	for _, pair := range elfPairs {
 		elfs := strings.Split(pair, ",")
 		elf1 := strToElf(elfs[0])
 		elf2 := strToElf(elfs[1])
 		// check if the elfs don't overlap, if they don't not overlap, it's an overlap??
-		if !(elf1.end < elf2.start || elf1.start > elf2.end) {
-			overlaps++
+		if elf1.end < elf2.start || elf1.start > elf2.end {
+			totalPairs--
 		}
 	}
-	return overlaps
+	return strconv.Itoa(totalPairs)
 }
 
 func strToElf(elf string) Elf {

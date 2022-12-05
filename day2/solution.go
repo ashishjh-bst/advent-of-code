@@ -1,10 +1,11 @@
 package day2
 
 import (
+	"strconv"
 	"strings"
 )
 
-func Part1(input string) int {
+func Part1(input string) string {
 	rounds := strings.Split(input, "\n")
 	score := 0
 	for _, round := range rounds {
@@ -29,10 +30,10 @@ func Part1(input string) int {
 			score += 6
 		}
 	}
-	return score
+	return strconv.Itoa(score)
 }
 
-func Part2(input string) int {
+func Part2(input string) string {
 	rounds := strings.Split(input, "\n")
 	score := 0
 	for _, round := range rounds {
@@ -57,5 +58,5 @@ func Part2(input string) int {
 			score += 7
 		}
 	}
-	return score
+	return strconv.Itoa(score)
 }

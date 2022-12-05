@@ -1,10 +1,11 @@
 package day3
 
 import (
+	"strconv"
 	"strings"
 )
 
-func Part1(input string) int {
+func Part1(input string) string {
 	rucksacks := strings.Split(input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
@@ -28,10 +29,10 @@ func Part1(input string) int {
 			}
 		}
 	}
-	return prioritySum
+	return strconv.Itoa(prioritySum)
 }
 
-func Part2(input string) int {
+func Part2(input string) string {
 	rucksacks := strings.Split(input, "\n")
 	type GiftMap map[rune]int
 	prioritySum := 0
@@ -66,7 +67,7 @@ func Part2(input string) int {
 			}
 		}
 	}
-	return prioritySum
+	return strconv.Itoa(prioritySum)
 }
 
 func getCompartments(rucksack string) ([]rune, []rune) {
