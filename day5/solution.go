@@ -2,7 +2,6 @@ package day5
 
 import (
 	"regexp"
-	"sort"
 	"strconv"
 	"strings"
 )
@@ -23,15 +22,7 @@ func Part1(input string) string {
 		stacks[to] = toStack
 	}
 	topCrates := make([]string, 0)
-	stackSortedKeys := make([]int, 0, len(stacks))
-	for key := range stacks {
-		stackSortedKeys = append(stackSortedKeys, key)
-	}
-	sort.Slice(stackSortedKeys, func(i, j int) bool {
-		return stackSortedKeys[i] <= stackSortedKeys[j]
-	})
-	for _, key := range stackSortedKeys {
-		stack := stacks[key]
+	for _, stack := range stacks {
 		topCrates = append(topCrates, stack[len(stack)-1])
 	}
 	return strings.Join(topCrates, "")
@@ -50,22 +41,15 @@ func Part2(input string) string {
 		stacks[from] = fromStack
 		stacks[to] = toStack
 	}
+
 	topCrates := make([]string, 0)
-	stackSortedKeys := make([]int, 0, len(stacks))
-	for key := range stacks {
-		stackSortedKeys = append(stackSortedKeys, key)
-	}
-	sort.Slice(stackSortedKeys, func(i, j int) bool {
-		return stackSortedKeys[i] <= stackSortedKeys[j]
-	})
-	for _, key := range stackSortedKeys {
-		stack := stacks[key]
+	for _, stack := range stacks {
 		topCrates = append(topCrates, stack[len(stack)-1])
 	}
 	return strings.Join(topCrates, "")
 }
 
-func parseInput(input string) (map[int][]string, []string) {
+func parseInput(input string) ([][]string, []string) {
 	lines := strings.Split(input, "\n")
 	stacks := make(map[int][]string, 0)
 	moves := make([]string, 0)
@@ -87,7 +71,11 @@ func parseInput(input string) (map[int][]string, []string) {
 			stacks[stackKey] = append([]string{string(crate[1])}, stacks[stackKey]...)
 		}
 	}
-	return stacks, moves
+	stacksSlice := make([][]string, len(stacks), len(stacks))
+	for key, val := range stacks {
+		stacksSlice[key-1] = val
+	}
+	return stacksSlice, moves
 }
 
 func parseMove(move string) (int, int, int) {
@@ -95,5 +83,5 @@ func parseMove(move string) (int, int, int) {
 	count, _ := strconv.Atoi(moveSplit[1])
 	from, _ := strconv.Atoi(moveSplit[3])
 	to, _ := strconv.Atoi(moveSplit[5])
-	return count, from, to
+	return count, from - 1, to - 1
 }
