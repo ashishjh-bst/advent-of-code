@@ -19,9 +19,9 @@ func parseInput(input *string, markerSize int) string {
 		if i+markerSize-1 >= len(*input) {
 			return "0"
 		}
-		marker := make(map[rune]int, 0)
+		marker := make(map[byte]int, 0)
 		for j := 0; j < markerSize; j++ {
-			char := rune((*input)[i+j])
+			char := (*input)[i+j]
 			marker[char]++
 			if marker[char] > 1 {
 				break
