@@ -5,40 +5,42 @@ import (
 )
 
 func Part1(input *string) string {
+	markerSize := 4
 	for i := 0; i < len(*input); i++ {
-		if i+3 >= len(*input) {
+		if i+(markerSize-1) >= len(*input) {
 			return "0"
 		}
 		marker := make(map[rune]int, 0)
-		for j := 0; j < 4; j++ {
+		for j := 0; j < markerSize; j++ {
 			char := rune((*input)[i+j])
 			marker[char]++
 			if marker[char] > 1 {
 				break
 			}
 		}
-		if len(marker) == 4 {
-			return strconv.Itoa(i + 4)
+		if len(marker) == markerSize {
+			return strconv.Itoa(i + markerSize)
 		}
 	}
 	return "0"
 }
 
 func Part2(input *string) string {
+	markerSize := 14
 	for i := 0; i < len(*input); i++ {
-		if i+13 >= len(*input) {
+		if i+markerSize-1 >= len(*input) {
 			return "0"
 		}
 		marker := make(map[rune]int, 0)
-		for j := 0; j < 14; j++ {
+		for j := 0; j < markerSize; j++ {
 			char := rune((*input)[i+j])
 			marker[char]++
 			if marker[char] > 1 {
 				break
 			}
 		}
-		if len(marker) == 14 {
-			return strconv.Itoa(i + 14)
+		if len(marker) == markerSize {
+			return strconv.Itoa(i + markerSize)
 		}
 	}
 	return "0"
