@@ -28,10 +28,7 @@ func Part2(input *string) string {
 	dirs := getAllEligibleSubDir(dir, spaceNeeded)
 	var smallestEligibeDir *Directory
 	for _, subDir := range dirs {
-		if smallestEligibeDir == nil {
-			smallestEligibeDir = subDir
-		}
-		if subDir.size < smallestEligibeDir.size {
+		if smallestEligibeDir == nil || subDir.size < smallestEligibeDir.size {
 			smallestEligibeDir = subDir
 		}
 	}
