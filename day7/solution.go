@@ -25,13 +25,7 @@ func Part2(input *string) string {
 	dir := &Directory{size: 0, name: "/", directories: make([]*Directory, 0)}
 	fileSystemParser(lines, dir)
 	spaceNeeded := 30000000 - (70000000 - dir.size)
-	dirs := getAllEligibleSubDir(dir, spaceNeeded)
-	var smallestEligibeDir *Directory
-	for _, subDir := range dirs {
-		if smallestEligibeDir == nil || subDir.size < smallestEligibeDir.size {
-			smallestEligibeDir = subDir
-		}
-	}
+	smallestEligibeDir := getSmallestEligibleDir(dir, spaceNeeded, nil)
 	spaceFreed := strconv.Itoa(smallestEligibeDir.size)
 	return spaceFreed
 }
@@ -79,18 +73,18 @@ func getDirSumBelowSize(dir *Directory, max int) int {
 	return total
 }
 
-func getAllEligibleSubDir(dir *Directory, spaceNeeded int) []*Directory {
-	dirs := make([]*Directory, 0)
-	if dir.size > spaceNeeded {
-		dirs = append(dirs, dir)
+func getSmallestEligibleDir(dir *Directory, spaceNeeded int, smallestEligibleDir *Directory) *Directory {
+	if smallestEligibleDir == nil {
+		smallestEligibleDir = dir
 	}
-
+	if dir.size > spaceNeeded && dir.size < smallestEligibleDir.size {
+		smallestEligibleDir = dir
+	}
 	for _, subDir := range dir.directories {
 		if subDir.size < spaceNeeded {
 			continue
 		}
-		dirs = append(dirs, getAllEligibleSubDir(subDir, spaceNeeded)...)
+		smallestEligibleDir = getSmallestEligibleDir(subDir, spaceNeeded, smallestEligibleDir)
 	}
-
-	return dirs
+	return smallestEligibleDir
 }
