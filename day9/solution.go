@@ -93,7 +93,7 @@ func (k *Knot) moveNode(dir string) {
 	}
 
 	if k.next != nil {
-		fmt.Println(dir, *k, *k.next)
+		//fmt.Println(dir, *k, *k.next)
 		if k.x-k.next.x == 2 {
 			k.next.y = k.y
 			k.next.moveNode("R")
