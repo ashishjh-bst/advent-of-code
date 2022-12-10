@@ -41,9 +41,10 @@ func Part1(input *string) string {
 	return fmt.Sprintf("%d", len(moveMap))
 }
 
+// unsolved
 func Part2(input *string) string {
 	moves := strings.Split(*input, "\n")
-	size := 10
+	size := 3
 	rope := &Rope{}
 	moveMap := make(map[string]int, 0)
 	moveMap["0,0"] = 1
@@ -54,11 +55,11 @@ func Part2(input *string) string {
 		moveParser := strings.Split(move, " ")
 		dir := moveParser[0]
 		steps, _ := strconv.Atoi(moveParser[1])
-		//fmt.Println(dir, steps)
+		fmt.Println(dir, steps)
 		for i := 0; i < steps; i++ {
 			rope.head.moveNode(dir)
 			moveMap[fmt.Sprintf("%d,%d", rope.tail.x, rope.tail.y)] = 1
-			//fmt.Printf("\n HEAD: %d,%d, TAIL %d,%d \n", rope.head.x, rope.head.y, rope.tail.x, rope.tail.y)
+			fmt.Printf("\n HEAD: %d,%d, TAIL %d,%d \n", rope.head.x, rope.head.y, rope.tail.x, rope.tail.y)
 		}
 	}
 	return fmt.Sprintf("%d", len(moveMap))
@@ -93,11 +94,9 @@ func (k *Knot) moveNode(dir string) {
 	}
 
 	if k.next != nil {
-		//fmt.Println(dir, *k, *k.next)
 		if k.x-k.next.x == 2 {
 			k.next.y = k.y
 			k.next.moveNode("R")
-
 		}
 		if k.x-k.next.x == -2 {
 			k.next.y = k.y
@@ -111,6 +110,5 @@ func (k *Knot) moveNode(dir string) {
 			k.next.x = k.x
 			k.next.moveNode("D")
 		}
-		return
 	}
 }
