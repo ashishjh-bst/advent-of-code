@@ -10,6 +10,7 @@ import (
 	"github.com/ashishjh-bst/aoc2022/common"
 	"github.com/ashishjh-bst/aoc2022/day1"
 	"github.com/ashishjh-bst/aoc2022/day10"
+	"github.com/ashishjh-bst/aoc2022/day11"
 	"github.com/ashishjh-bst/aoc2022/day2"
 	"github.com/ashishjh-bst/aoc2022/day3"
 	"github.com/ashishjh-bst/aoc2022/day4"
@@ -37,6 +38,7 @@ func main() {
 		8:  {1: day8.Part1, 2: day8.Part2},
 		9:  {1: day9.Part1, 2: day9.Part2},
 		10: {1: day10.Part1, 2: day10.Part2},
+		11: {1: day11.Part1, 2: day11.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])
