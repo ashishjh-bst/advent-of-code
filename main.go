@@ -11,6 +11,7 @@ import (
 	"github.com/ashishjh-bst/aoc2022/day1"
 	"github.com/ashishjh-bst/aoc2022/day10"
 	"github.com/ashishjh-bst/aoc2022/day11"
+	"github.com/ashishjh-bst/aoc2022/day12"
 	"github.com/ashishjh-bst/aoc2022/day2"
 	"github.com/ashishjh-bst/aoc2022/day3"
 	"github.com/ashishjh-bst/aoc2022/day4"
@@ -39,6 +40,7 @@ func main() {
 		9:  {1: day9.Part1, 2: day9.Part2},
 		10: {1: day10.Part1, 2: day10.Part2},
 		11: {1: day11.Part1, 2: day11.Part2},
+		12: {1: day12.Part1, 2: day12.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])
@@ -56,7 +58,7 @@ func main() {
 		log.Fatalf("Invalid Part %s, should be 1 or 2", args[1])
 	}
 
-	log.Printf("Executing aoc2022 Day %d Part %d", day, part)
+	log.Printf("\nExecuting aoc2022 Day %d Part %d", day, part)
 	input, err := common.ReadFileInput(fmt.Sprintf("./day%d/input.txt", day))
 	if err != nil {
 		log.Fatal(err)
@@ -65,6 +67,6 @@ func main() {
 	answer := Days[day][part](&input)
 	elapsed := time.Since(start)
 
-	log.Printf("Execution took %s seconds", elapsed)
-	log.Printf("The answer is %s", answer)
+	log.Printf("\nExecution took %s seconds", elapsed)
+	log.Printf("\nThe answer is %s", answer)
 }
