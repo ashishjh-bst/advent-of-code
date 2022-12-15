@@ -12,6 +12,7 @@ import (
 	"github.com/ashishjh-bst/aoc2022/day10"
 	"github.com/ashishjh-bst/aoc2022/day11"
 	"github.com/ashishjh-bst/aoc2022/day12"
+	"github.com/ashishjh-bst/aoc2022/day13"
 	"github.com/ashishjh-bst/aoc2022/day2"
 	"github.com/ashishjh-bst/aoc2022/day3"
 	"github.com/ashishjh-bst/aoc2022/day4"
@@ -41,6 +42,7 @@ func main() {
 		10: {1: day10.Part1, 2: day10.Part2},
 		11: {1: day11.Part1, 2: day11.Part2},
 		12: {1: day12.Part1, 2: day12.Part2},
+		13: {1: day13.Part1, 2: day13.Part2},
 	}
 
 	day, err := strconv.Atoi(args[0])
@@ -67,6 +69,6 @@ func main() {
 	answer := Days[day][part](&input)
 	elapsed := time.Since(start)
 
-	log.Printf("\nExecution took %s seconds", elapsed)
+	log.Printf("\nExecution took %s", elapsed)
 	log.Printf("\nThe answer is %s", answer)
 }
