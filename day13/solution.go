@@ -2,6 +2,7 @@ package day13
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -131,5 +132,20 @@ func parse(sub string) ([]interface{}, int) {
 }
 
 func Part2(input *string) string {
-	return ""
+	lines := strings.Split(*input, "\n")
+	packets := make([]interface{}, 0)
+	for i := 0; i < len(lines); i = i + 3 {
+		p1, _ := parse(lines[i])
+		p2, _ := parse(lines[i+1])
+		packets = append(packets, p1, p2)
+	}
+	packets = append(packets, []interface{}{[]interface{}{2}}, []interface{}{[]interface{}{6}})
+	sort.Slice(packets, func(i, j int) bool { return compare(packets[i], packets[j]) > 0 })
+	result := 1
+	for i, p := range packets {
+		if fmt.Sprint(p) == "[[2]]" || fmt.Sprint(p) == "[[6]]" {
+			result *= i + 1
+		}
+	}
+	return strconv.Itoa(result)
 }
