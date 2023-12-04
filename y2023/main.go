@@ -6,6 +6,7 @@ import (
 
 	"github.com/ashishjh-bst/aoc/y2023/day1"
 	"github.com/ashishjh-bst/aoc/y2023/day2"
+	"github.com/ashishjh-bst/aoc/y2023/day3"
 )
 
 func Calculate(day int, part int, input *string) (string, error) {
@@ -17,6 +18,7 @@ func Calculate(day int, part int, input *string) (string, error) {
 	Days := map[int]Day{
 		1: {1: day1.Part1, 2: day1.Part2},
 		2: {1: day2.Part1, 2: day2.Part2},
+		3: {1: day3.Part1, 2: day3.Part2},
 	}
 
 	if Days[day] == nil {
