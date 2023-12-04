@@ -2,7 +2,6 @@ package y2022
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/ashishjh-bst/aoc/y2022/day1"
@@ -50,7 +49,6 @@ func Calculate(day int, part int, input *string) (string, error) {
 		return "", fmt.Errorf("invalid Part %s, should be 1 or 2", args[1])
 	}
 
-	log.Printf("\nExecuting y2022 Day %d Part %d", day, part)
 	answer := Days[day][part](input)
 	return answer, nil
 }

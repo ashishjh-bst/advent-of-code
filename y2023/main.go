@@ -2,10 +2,10 @@ package y2023
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/ashishjh-bst/aoc/y2023/day1"
+	"github.com/ashishjh-bst/aoc/y2023/day2"
 )
 
 func Calculate(day int, part int, input *string) (string, error) {
@@ -16,6 +16,7 @@ func Calculate(day int, part int, input *string) (string, error) {
 	// map of solutions
 	Days := map[int]Day{
 		1: {1: day1.Part1, 2: day1.Part2},
+		2: {1: day2.Part1, 2: day2.Part2},
 	}
 
 	if Days[day] == nil {
@@ -26,7 +27,6 @@ func Calculate(day int, part int, input *string) (string, error) {
 		return "", fmt.Errorf("invalid Part %s, should be 1 or 2", args[1])
 	}
 
-	log.Printf("\nExecuting y2023 Day %d Part %d", day, part)
 	answer := Days[day][part](input)
 	return answer, nil
 }
