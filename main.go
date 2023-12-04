@@ -9,6 +9,7 @@ import (
 
 	"github.com/ashishjh-bst/aoc/common"
 	"github.com/ashishjh-bst/aoc/y2022"
+	"github.com/ashishjh-bst/aoc/y2023"
 )
 
 func main() {
@@ -26,6 +27,7 @@ func main() {
 
 	Years := map[int]Year{
 		2022: y2022.Calculate,
+		2023: y2023.Calculate,
 	}
 
 	year, err := strconv.Atoi(args[0])
