@@ -1,3 +1,3 @@
-module github.com/ashishjh-bst/aoc2022
+module github.com/ashishjh-bst/aoc
 
 go 1.17
