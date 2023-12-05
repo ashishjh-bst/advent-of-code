@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/ashishjh-bst/aoc/common"
+	"github.com/ashishjh-bst/aoc/y2015"
 	"github.com/ashishjh-bst/aoc/y2022"
 	"github.com/ashishjh-bst/aoc/y2023"
 )
@@ -26,6 +27,7 @@ func main() {
 	}
 
 	Years := map[int]Year{
+		2015: y2015.Calculate,
 		2022: y2022.Calculate,
 		2023: y2023.Calculate,
 	}
