@@ -1,6 +1,7 @@
 package day6
 
 import (
+	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -11,23 +12,13 @@ func Part1(input *string) string {
 	numRegex := regexp.MustCompile("[0-9]+")
 	times := numRegex.FindAllString(raceData[0], -1)
 	distance := numRegex.FindAllString(raceData[1], -1)
-	var possibilities []int
+	prod := 1
 	for i, time := range times {
 		intTime, _ := strconv.Atoi(time)
 		intDist, _ := strconv.Atoi(distance[i])
-		possible := 0
-		for hold := 1; hold <= intTime; hold++ {
-			if hold*(intTime-hold) > intDist {
-				possible++
-			}
-		}
-		possibilities = append(possibilities, possible)
+		prod *= calc_possibility(intTime, intDist)
 	}
 
-	prod := 1
-	for _, possible := range possibilities {
-		prod *= possible
-	}
 	return strconv.Itoa(prod)
 }
 
@@ -38,12 +29,12 @@ func Part2(input *string) string {
 	distance := numRegex.FindAllString(raceData[1], -1)
 	intTime, _ := strconv.Atoi(strings.Join(times, ""))
 	intDist, _ := strconv.Atoi(strings.Join(distance, ""))
-	possible := 0
-	for hold := 1; hold <= intTime; hold++ {
-		if hold*(intTime-hold) > intDist {
-			possible++
-		}
-	}
+	return strconv.Itoa(calc_possibility(intTime, intDist))
+}
 
-	return strconv.Itoa(possible)
+func calc_possibility(time, dist int) int {
+	speed := math.Sqrt(float64(time*time - 4*dist))
+	holdMin := int(math.Ceil((float64(time) - speed) / 2))
+	holdMax := int(math.Floor((float64(time) + speed) / 2))
+	return holdMax - holdMin + 1
 }
