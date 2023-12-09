@@ -1,7 +1,6 @@
 package day8
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -79,12 +78,10 @@ func Part2(input *string) string {
 		}
 	}
 	var nodeCounters []int
-	fmt.Printf("%#v", startNodes)
 	for _, node := range startNodes {
 		count := nodeMap.TraverseInstructions2(instructions, node, 0)
 		nodeCounters = append(nodeCounters, count)
 	}
-	fmt.Printf("%#v", nodeCounters)
 	var lcm int
 	if len(nodeCounters) == 2 {
 		lcm = LCM(nodeCounters[0], nodeCounters[1])
