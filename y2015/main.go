@@ -7,6 +7,7 @@ import (
 	"github.com/ashishjh-bst/aoc/y2015/day1"
 	"github.com/ashishjh-bst/aoc/y2015/day2"
 	"github.com/ashishjh-bst/aoc/y2015/day3"
+	"github.com/ashishjh-bst/aoc/y2015/day4"
 )
 
 func Calculate(day int, part int, input *string) (string, error) {
@@ -19,7 +20,7 @@ func Calculate(day int, part int, input *string) (string, error) {
 		1: {1: day1.Part1, 2: day1.Part2},
 		2: {1: day2.Part1, 2: day2.Part2},
 		3: {1: day3.Part1, 2: day3.Part2},
-		// 4:  {1: day4.Part1, 2: day4.Part2},
+		4: {1: day4.Part1, 2: day4.Part2},
 		// 5:  {1: day5.Part1, 2: day5.Part2},
 		// 6:  {1: day6.Part1, 2: day6.Part2},
 		// 7:  {1: day7.Part1, 2: day7.Part2},
