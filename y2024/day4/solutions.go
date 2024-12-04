@@ -1,7 +1,6 @@
 package day4
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -15,15 +14,11 @@ func Part1(input *string) string {
 	for i := 0; i < len(*grid); i++ {
 		for j := 0; j < len((*grid)[i]); j++ {
 			startPos := [2]int{i, j}
-			fmt.Printf("StartPOS: %v \n", startPos)
 			for _, dir := range directions {
-				fmt.Printf("Direction: %v", dir)
 				if searchDirectionForWord(grid, word, startPos, dir) {
 					wordCount++
 				}
-				fmt.Print("\n")
 			}
-			fmt.Print("\n")
 		}
 	}
 	return strconv.Itoa(wordCount)
@@ -59,14 +54,12 @@ func searchDirectionForWord(grid *[][]string, word string, start [2]int, dir [2]
 	gridPoint := *grid
 	for i := 0; i < len(word); i++ {
 		checkPos := [2]int{start[0] + i*dir[0], start[1] + i*dir[1]}
-		// fmt.Printf("Checking pos %v == %s, rowLen: %d, colLen: %d \n", checkPos, string(word[i-1]), len(gridPoint), len(gridPoint[0]))
 		if checkPos[0] == -1 || checkPos[1] == -1 || checkPos[0] >= len(gridPoint) || checkPos[1] >= len(gridPoint[0]) {
 			return false
 		}
 		if gridPoint[checkPos[0]][checkPos[1]] != string(word[i]) {
 			return false
 		}
-		fmt.Printf("%s", string(word[i]))
 	}
 	return true
 }
