@@ -10,6 +10,7 @@ import (
 	"github.com/ashishjh-bst/aoc/y2024/day4"
 	"github.com/ashishjh-bst/aoc/y2024/day5"
 	"github.com/ashishjh-bst/aoc/y2024/day6"
+	"github.com/ashishjh-bst/aoc/y2024/day7"
 )
 
 func Calculate(day int, part int, input *string) (string, error) {
@@ -25,6 +26,7 @@ func Calculate(day int, part int, input *string) (string, error) {
 		4: {1: day4.Part1, 2: day4.Part2},
 		5: {1: day5.Part1, 2: day5.Part2},
 		6: {1: day6.Part1, 2: day6.Part2},
+		7: {1: day7.Part1, 2: day7.Part2},
 	}
 
 	if Days[day] == nil {
