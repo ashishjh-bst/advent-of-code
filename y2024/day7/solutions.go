@@ -44,31 +44,8 @@ func parseLine(line string) (int, []int) {
 
 func checkLine(line string, ops []string) (bool, int) {
 	result, eqNums := parseLine(line)
-	combinations := generateCombinations(ops, len(eqNums)-1)
-	gotResult := false
-	for _, combination := range combinations {
-		gotResult = checkCombination(result, eqNums, combination)
-		if gotResult {
-			return true, result
-		}
-	}
-	return gotResult, result
-}
-
-func checkCombination(result int, eqNums []int, combination string) bool {
-	sum := 0
-	for i := 0; i < len(eqNums)-1; i++ {
-		if sum > result {
-			return false
-		}
-		op := string(combination[i])
-		a := eqNums[i]
-		if sum > 0 {
-			a = sum
-		}
-		sum = doOp(op, a, eqNums[i+1])
-	}
-	return sum == result
+	shouldAdd := isValidPath(result, eqNums, eqNums[0], 1, ops)
+	return shouldAdd, result
 }
 
 func doOp(op string, a, b int) int {
@@ -85,16 +62,17 @@ func doOp(op string, a, b int) int {
 	return 0
 }
 
-func generateCombinations(operators []string, slots int) []string {
-	if slots == 0 {
-		return []string{""}
+func isValidPath(expected int, list []int, lastSum int, nextPos int, ops []string) bool {
+	if lastSum > expected {
+		return false
 	}
-	previousCombinations := generateCombinations(operators, slots-1)
-	var combinations []string
-	for _, comb := range previousCombinations {
-		for _, op := range operators {
-			combinations = append(combinations, comb+op)
+	if nextPos == len(list) {
+		return expected == lastSum
+	}
+	for _, op := range ops {
+		if isValidPath(expected, list, doOp(op, lastSum, list[nextPos]), nextPos+1, ops) {
+			return true
 		}
 	}
-	return combinations
+	return false
 }
