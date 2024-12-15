@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/ashishjh-bst/aoc/common"
 )
 
 var Directions = [4][2]int{{0, 1}, {0, -1}, {-1, 0}, {1, 0}}
@@ -63,7 +65,7 @@ func countTrailEnds(grid *[][]int, start [2]int) int {
 func traverseTrail(grid *[][]int, current [2]int, dir [2]int, tEnds *map[[2]int]int) {
 	currentValue := (*grid)[current[0]][current[1]]
 	next := [2]int{current[0] + dir[0], current[1] + dir[1]}
-	if isPosOutside(next, grid) {
+	if common.IsPosOutside(next, grid) {
 		return
 	}
 	nextValue := (*grid)[next[0]][next[1]]
@@ -77,8 +79,4 @@ func traverseTrail(grid *[][]int, current [2]int, dir [2]int, tEnds *map[[2]int]
 	for _, dir := range Directions {
 		traverseTrail(grid, next, dir, tEnds)
 	}
-}
-
-func isPosOutside(currentPos [2]int, grid *[][]int) bool {
-	return currentPos[0] < 0 || currentPos[0] >= len(*grid) || currentPos[1] < 0 || currentPos[1] >= len((*grid)[0])
 }

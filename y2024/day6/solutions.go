@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/ashishjh-bst/aoc/common"
 )
 
 func Part1(input *string) string {
@@ -12,7 +14,7 @@ func Part1(input *string) string {
 	currentPos := startPos
 	currentDir := startDir
 	visitedMap[currentPos] = true
-	for !isPosOutside(currentPos, &grid) {
+	for !common.IsPosOutside(currentPos, &grid) {
 		currentPos, currentDir = move(currentPos, currentDir, &blocks)
 		visitedMap[currentPos] = true
 	}
@@ -25,7 +27,7 @@ func Part2(input *string) string {
 	grid, startPos, startDir, blocks := creategrid(input)
 	currentPos := startPos
 	currentDir := startDir
-	for !isPosOutside(currentPos, &grid) {
+	for !common.IsPosOutside(currentPos, &grid) {
 		currentPos, currentDir = move(currentPos, currentDir, &blocks)
 		visitedMap[currentPos] = true
 	}
@@ -43,7 +45,7 @@ func Part2(input *string) string {
 
 func IsLoopPossible(grid *[][]string, blocks *map[[2]int]bool, currentPos [2]int, currentDir [2]int) bool {
 	visitedAndDirMap := make(map[[4]int]bool)
-	for !isPosOutside(currentPos, grid) {
+	for !common.IsPosOutside(currentPos, grid) {
 		currentPos, currentDir = move(currentPos, currentDir, blocks)
 		currentDirPos := [4]int{currentDir[0], currentDir[1], currentPos[0], currentPos[1]}
 		_, ok := visitedAndDirMap[currentDirPos]
@@ -114,8 +116,4 @@ func move(currentPos [2]int, currentDir [2]int, blocks *map[[2]int]bool) ([2]int
 		return currentPos, nextDir
 	}
 	return nextPos, currentDir
-}
-
-func isPosOutside(currentPos [2]int, grid *[][]string) bool {
-	return currentPos[0] < 0 || currentPos[0] >= len(*grid) || currentPos[1] < 0 || currentPos[1] >= len((*grid)[0])
 }

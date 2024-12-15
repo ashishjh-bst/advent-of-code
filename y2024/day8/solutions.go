@@ -3,6 +3,8 @@ package day8
 import (
 	"fmt"
 	"strings"
+
+	"github.com/ashishjh-bst/aoc/common"
 )
 
 type Pos [2]int
@@ -71,16 +73,12 @@ func AreColinearPoints(p1, p2, n Pos) bool {
 func (am *AntinaeMap) getAntinodes(p1, p2 Pos) {
 	n1 := p1.Add(p1.Sub(p2))
 	n2 := p2.Add(p2.Sub(p1))
-	if !isPosOutside(n1, am.Grid) {
+	if !common.IsPosOutside(n1, &am.Grid) {
 		am.AntiNodeMap[n1] = true
 	}
-	if !isPosOutside(n2, am.Grid) {
+	if !common.IsPosOutside(n2, &am.Grid) {
 		am.AntiNodeMap[n2] = true
 	}
-}
-
-func isPosOutside(currentPos Pos, grid [][]string) bool {
-	return currentPos[0] < 0 || currentPos[0] >= len(grid) || currentPos[1] < 0 || currentPos[1] >= len((grid)[0])
 }
 
 func ParseInput(input *string) *AntinaeMap {
