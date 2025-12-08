@@ -12,6 +12,7 @@ import (
 	"github.com/ashishjh-bst/aoc/y2022"
 	"github.com/ashishjh-bst/aoc/y2023"
 	"github.com/ashishjh-bst/aoc/y2024"
+	"github.com/ashishjh-bst/aoc/y2025"
 )
 
 func main() {
@@ -32,6 +33,7 @@ func main() {
 		2022: y2022.Calculate,
 		2023: y2023.Calculate,
 		2024: y2024.Calculate,
+		2025: y2025.Calculate,
 	}
 
 	year, err := strconv.Atoi(args[0])
